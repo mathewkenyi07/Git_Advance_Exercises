@@ -343,6 +343,311 @@ $ git reflog
 4f2faff HEAD@{9}: rebase (abort): returning to refs/heads/main
 ```
 
+## Exercise 2
+
+### Part 1
+
+```bash
+$ git switch -c ft/new-feature
+Switched to a new branch 'ft/new-feature'
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/new-feature)
+$ git branch
+  ft/branch
+* ft/new-feature
+  main
+```
+
+### Part 2
+
+```bash 
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/new-feature)
+$ touch feature.txt
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/new-feature)
+$ echo "This the content of new-feature branch">feature.txt
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/new-feature)
+$ git add feature.txt
+warning: in the working copy of 'feature.txt', LF will be replaced by CRLF the next time Git touches it
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/new-feature)
+$ git commit -m "Implemented core functionality for new feature"
+[ft/new-feature e236d9d] Implemented core functionality for new feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+```
+
+### Part 3
+
+```bash 
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/new-feature)
+$ git switch main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ touch readme.txt
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ echo "Hello this is matt">readme.txt
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git add readme.txt
+warning: in the working copy of 'readme.txt', LF will be replaced by CRLF the next time Git touches it
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git commit -m "Updated project readme"
+[main f674d9f] Updated project readme
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+```
+
+### Part 4
+
+```bash
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 483 bytes | 241.00 KiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/mathewkenyi07/Git_Advance_Exercises.git
+   d3f4b83..f674d9f  main -> main
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git push -u origin ft/new-feature
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'ft/new-feature' on GitHub by visiting:
+remote:      https://github.com/mathewkenyi07/Git_Advance_Exercises/pull/new/ft/new-feature
+remote: 
+To https://github.com/mathewkenyi07/Git_Advance_Exercises.git
+ * [new branch]      ft/new-feature -> ft/new-feature
+branch 'ft/new-feature' set up to track 'origin/ft/new-feature'.
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git merge ft/new-feature 
+Merge made by the 'ort' strategy.
+ feature.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 300 bytes | 300.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/mathewkenyi07/Git_Advance_Exercises.git
+   f674d9f..b31b9b3  main -> main
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+```
+
+### Part 5
+
+```bash
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git branch
+  ft/branch
+  ft/new-feature
+* main
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git branch -d ft/new-feature
+Deleted branch ft/new-feature (was e236d9d).
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git branch
+  ft/branch
+* main
+```
+
+### Part 6
+
+```bash
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git log --oneline
+b31b9b3 (HEAD -> main, origin/main) Merge branch 'ft/new-feature'
+f674d9f Updated project readme
+e236d9d (origin/ft/new-feature) Implemented core functionality for new feature
+06458ca deleted files
+d3f4b83 deleted
+1014fdf added a readme file with the commands that answers the questions
+61f4506 Implemented test 5
+4f2faff Create Third File
+8fc3091 chore: Create initial file
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git switch -c new-branch-from-commit e236d9d
+Switched to a new branch 'new-branch-from-commit'
+```
+
+### Part 7
+
+```bash
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (new-branch-from-commit)
+$ git log --oneline
+e236d9d (HEAD -> new-branch-from-commit, origin/ft/new-feature) Implemented core functionality for new feature
+06458ca deleted files
+d3f4b83 deleted
+1014fdf added a readme file with the commands that answers the questions
+61f4506 Implemented test 5
+4f2faff Create Third File
+8fc3091 chore: Create initial file
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (new-branch-from-commit)
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git merge new-branch-from-commit
+Already up to date.
+```
+
+### Part 8
+
+```bash
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git switch new-branch-from-commit
+Switched to branch 'new-branch-from-commit'
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (new-branch-from-commit)
+$ git rebase main
+Successfully rebased and updated refs/heads/new-branch-from-commit.
+```
+
+### Part 9
+
+```bash
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git switch ft/improved-branch-name
+Switched to branch 'ft/improved-branch-name'
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/improved-branch-name)
+$ git status
+On branch ft/improved-branch-name
+nothing to commit, working tree clean
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/improved-branch-name)
+$ git push
+fatal: The current branch ft/improved-branch-name has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin ft/improved-branch-name
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/improved-branch-name)
+$ git push -u origin ft/improved-branch-name
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'ft/improved-branch-name' on GitHub by visiting:
+remote:      https://github.com/mathewkenyi07/Git_Advance_Exercises/pull/new/ft/improved-branch-name
+remote: 
+To https://github.com/mathewkenyi07/Git_Advance_Exercises.git
+ * [new branch]      ft/improved-branch-name -> ft/improved-branch-name
+branch 'ft/improved-branch-name' set up to track 'origin/ft/improved-branch-name'.
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (ft/improved-branch-name)
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git push
+Everything up-to-date
+```
+
+### Part 10
+
+```bash
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git log --oneline
+b31b9b3 (HEAD -> main, origin/main, origin/ft/improved-branch-name, ft/improved-branch-name) Merge branch 'ft/new-feature'
+f674d9f Updated project readme
+e236d9d (origin/ft/new-feature) Implemented core functionality for new feature
+06458ca deleted files
+d3f4b83 deleted
+1014fdf added a readme file with the commands that answers the questions
+61f4506 Implemented test 5
+4f2faff Create Third File
+8fc3091 chore: Create initial file
+
+MATHEW@Matt MINGW64 ~/Desktop/Git Advance (main)
+$ git switch --detach 61f4506 
+HEAD is now at 61f4506 Implemented test 5
+```
+
+
+
 
 
 
